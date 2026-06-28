@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color:#D98C8C;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+    padding:20px;
+}
+#setUp{
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    width:90%;
+    max-width:500px;
+
+    background:#F2D7D5;
+
+    border-radius:10px;
+
+    padding:25px;
+
+    text-align:center;
+}
+img,h2,h6{
+
+    margin:10px 0;
+}
+
+button{
+
+    margin-top:15px;
+}
+button{
+
+    padding:10px 20px;
+
+    font-size:16px;
+
+    border:none;
+
+    border-radius:5px;
+
+    cursor:pointer;
+}
+#setUp{
+    position: relative;
+}
+#btns{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+}
+.image{
+
+    width:180px;
+
+    max-width:70%;
+
+    height:auto;
+}
+@media (max-width:600px){
+
+    #setUp{
+
+        width:95%;
+
+        padding:20px;
+    }
+
+    h2{
+
+        font-size:22px;
+    }
+
+    h6{
+
+        font-size:14px;
+    }
+
+    .image{
+
+        width:130px;
+    }
+
+    #btns{
+
+        flex-direction:column;
+    }
+
+    button{
+
+        width:140px;
+    }
+
+}
+
+</style>
+<body>
+    <div id="setUp">
+    <img src="./pictures/LikeMe.jpg" alt="LikeMe" class="image">
+    <h2> Raseeth 💕 May you Like me ?</h2>
+ <div id="btns">
+    <button> Yes </button>
+    <button> No </button></div>
+   <h6> Dont Waste Your time to follow the No 😂</h6>
+    </div>
+   
+</body>
+<script>
+    const yesBtn = document.querySelector("#btns button:first-child");
+    const noBtn = document.querySelector("#btns button:last-child");
+    let btns=document.getElementById("setUp");
+    yesBtn.addEventListener("click", () => {
+        alert("Thank you for liking me! 😊");
+        window.location.href='afterYes.html'
+    });
+
+    noBtn.addEventListener("mouseover",()=>{
+    let padding = 20;
+
+   let width = btns.clientWidth - noBtn.offsetWidth - padding;
+
+   let height = btns.clientHeight - noBtn.offsetHeight - padding;
+      let x= Math.random()*width ;
+      let y= Math.random()*height ;
+      noBtn.style.position="absolute";
+      noBtn.style.left=x+"px";
+      noBtn.style.top=y+"px";
+
+    })
+    </script>
+</html>

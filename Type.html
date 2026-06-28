@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding:0px;
+        margin:0px;
+        box-sizing:border-box; 
+        
+    }
+   body{
+    background-color:#db837c;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+    padding:20px;
+}
+     
+  
+   div{
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    width:90%;
+    max-width:550px;
+
+    background:#D3D3FF;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    z-index:10;
+}
+   h2,p{
+
+    margin:10px 0;
+}
+
+input{
+
+    margin:15px 0;
+}
+
+button{
+
+    margin-top:15px;
+}
+
+#chance{
+
+    margin-top:15px;
+}
+    
+.heart{
+    position:absolute;
+    width:5px;
+    height:5px;
+    top:-10px;
+   position: absolute;
+    animation:fall linear infinite;
+}
+@keyframes fall{
+    from{ 
+        transform:translateY(0) 
+    }
+    to{
+        transform:translateY(110vh) 
+    }
+}
+input{
+
+    width:100%;
+
+    max-width:350px;
+
+    padding:12px;
+
+    font-size:16px;
+
+    border-radius:6px;
+
+    border:1px solid #999;
+}
+button{
+
+    width:150px;
+
+    padding:12px;
+
+    font-size:16px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#ff5d73;
+
+    color:white;
+
+    cursor:pointer;
+} 
+#text{
+
+    color:blueviolet;
+
+    font-weight:bold;
+
+    line-height:1.8;
+} 
+@media (max-width:768px){
+
+    div{
+
+        width:95%;
+
+        padding:20px;
+    }
+
+    h2{
+
+        font-size:1.5rem;
+    }
+
+    p{
+
+        font-size:15px;
+    }
+
+    input{
+
+        max-width:300px;
+    }
+
+}
+@media (max-width:480px){
+
+    div{
+
+        width:95%;
+
+        padding:15px;
+    }
+
+    h2{
+
+        font-size:1.3rem;
+    }
+
+    p{
+
+        font-size:14px;
+    }
+
+    input{
+
+        width:100%;
+
+        max-width:250px;
+
+        font-size:14px;
+    }
+
+    button{
+
+        width:120px;
+
+        font-size:14px;
+    }
+
+}
+    </style>
+<body>
+    
+    <div>
+        <h2>  Hey My Breathe 💕</h2>
+        <p>Tell how you like me ? 😃😍</p>
+        <p>I give Three options let see your guess is correct or not🤔</p>
+        <p id="text">1.I Like you 2.I miss you 3.I love you</p>
+        <input type="text" id="input" placeholder="Type your message here...">
+        <button id="submit"> submit</button>
+        <p id="result"></p>
+
+        <p id="chance">Chances Left : 2</p>
+
+    </div>
+</body>
+<script>
+    let heart=document.getElementById("heart");
+    
+    for(i=0;i<=50;i++){
+      let heart=document.createElement("p");
+      heart.innerText="🧡"
+      heart.classList.add("heart")
+      
+     
+      heart.style.left=Math.random()*100+"vw";
+      heart.style.animationDuration = (Math.random()*3 + 2) + "s";
+       document.body.appendChild(heart);
+    }
+    
+
+    
+
+const correctAnswer = "i like you";
+
+let chances = 2;
+
+const input = document.getElementById("input");
+const submit = document.getElementById("submit");
+const result = document.getElementById("result");
+const chance = document.getElementById("chance");
+
+submit.addEventListener("click", () => {
+
+    let userAnswer = input.value.trim().toLowerCase();
+
+    if(userAnswer === correctAnswer){
+
+        result.innerHTML = "❤️ Correct! I knew you'd remember ❤️";
+
+        setTimeout(()=>{
+            window.location.href="last.html";
+        },2000);
+
+    }
+
+    else{
+
+        chances--;
+
+        chance.innerHTML = "Chances Left : " + chances;
+
+        if(chances==0){
+
+            result.innerHTML="😜 No more chances! I'll tell you the answer when we meet.";
+
+            submit.disabled=true;
+            input.disabled=true;
+
+            setInterval(
+                ()=>{
+                 window.location.href='last.html'   
+                },2000
+            )
+
+        }
+        else{
+
+            result.innerHTML="❌ Wrong! Try once more.";
+
+        }
+
+    }
+
+});
+
+
+</script>
+
+</html>
